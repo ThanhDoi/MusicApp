@@ -18,6 +18,19 @@
 		C059F55A1ED28EFB00290967 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059F5591ED28EFB00290967 /* Constant.swift */; };
 		C059F55C1ED28F6B00290967 /* RearMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059F55B1ED28F6B00290967 /* RearMenuViewCell.swift */; };
 		C059F55E1ED2908E00290967 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059F55D1ED2908E00290967 /* MainViewController.swift */; };
+		C0CA53C01EFA4C40002C524D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA53BF1EFA4C40002C524D /* Song.swift */; };
+		C0CA53C21EFA5738002C524D /* SongCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA53C11EFA5738002C524D /* SongCollectionViewController.swift */; };
+		C0CA53C41EFA57C3002C524D /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA53C31EFA57C3002C524D /* SongCollectionViewCell.swift */; };
+		C0CA53CF1EFA6C78002C524D /* 01 Another Day of Sun.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53C61EFA6C78002C524D /* 01 Another Day of Sun.m4a */; };
+		C0CA53D01EFA6C78002C524D /* 01 Free Smoke.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53C71EFA6C78002C524D /* 01 Free Smoke.m4a */; };
+		C0CA53D11EFA6C78002C524D /* 01 Lowlife.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53C81EFA6C78002C524D /* 01 Lowlife.m4a */; };
+		C0CA53D21EFA6C78002C524D /* 02 Money.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53C91EFA6C78002C524D /* 02 Money.m4a */; };
+		C0CA53D31EFA6C78002C524D /* 02 No Long Talk (feat. Giggs).m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53CA1EFA6C78002C524D /* 02 No Long Talk (feat. Giggs).m4a */; };
+		C0CA53D41EFA6C78002C524D /* 02 Someone in the Crowd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53CB1EFA6C78002C524D /* 02 Someone in the Crowd.m4a */; };
+		C0CA53D51EFA6C78002C524D /* 03 Altar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53CC1EFA6C78002C524D /* 03 Altar.m4a */; };
+		C0CA53D61EFA6C78002C524D /* 03 Mia & Sebastian_s Theme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53CD1EFA6C78002C524D /* 03 Mia & Sebastian_s Theme.m4a */; };
+		C0CA53D71EFA6C78002C524D /* 03 Passionfruit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C0CA53CE1EFA6C78002C524D /* 03 Passionfruit.m4a */; };
+		C0CA53D91EFA7235002C524D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA53D81EFA7235002C524D /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +61,19 @@
 		C059F5591ED28EFB00290967 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C059F55B1ED28F6B00290967 /* RearMenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RearMenuViewCell.swift; sourceTree = "<group>"; };
 		C059F55D1ED2908E00290967 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C0CA53BF1EFA4C40002C524D /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		C0CA53C11EFA5738002C524D /* SongCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewController.swift; sourceTree = "<group>"; };
+		C0CA53C31EFA57C3002C524D /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0CA53C61EFA6C78002C524D /* 01 Another Day of Sun.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 Another Day of Sun.m4a"; sourceTree = "<group>"; };
+		C0CA53C71EFA6C78002C524D /* 01 Free Smoke.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 Free Smoke.m4a"; sourceTree = "<group>"; };
+		C0CA53C81EFA6C78002C524D /* 01 Lowlife.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 Lowlife.m4a"; sourceTree = "<group>"; };
+		C0CA53C91EFA6C78002C524D /* 02 Money.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "02 Money.m4a"; sourceTree = "<group>"; };
+		C0CA53CA1EFA6C78002C524D /* 02 No Long Talk (feat. Giggs).m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "02 No Long Talk (feat. Giggs).m4a"; sourceTree = "<group>"; };
+		C0CA53CB1EFA6C78002C524D /* 02 Someone in the Crowd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "02 Someone in the Crowd.m4a"; sourceTree = "<group>"; };
+		C0CA53CC1EFA6C78002C524D /* 03 Altar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "03 Altar.m4a"; sourceTree = "<group>"; };
+		C0CA53CD1EFA6C78002C524D /* 03 Mia & Sebastian_s Theme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "03 Mia & Sebastian_s Theme.m4a"; sourceTree = "<group>"; };
+		C0CA53CE1EFA6C78002C524D /* 03 Passionfruit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "03 Passionfruit.m4a"; sourceTree = "<group>"; };
+		C0CA53D81EFA7235002C524D /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +120,7 @@
 				C059F54D1ED285DF00290967 /* View */,
 				C059F54A1ED285DF00290967 /* Controller */,
 				C059F54C1ED285DF00290967 /* Resources */,
+				C0CA53C51EFA6C78002C524D /* Song */,
 				C059F52A1ED2850700290967 /* AppDelegate.swift */,
 				C059F52E1ED2850700290967 /* Main.storyboard */,
 				C059F5311ED2850700290967 /* Assets.xcassets */,
@@ -117,6 +144,7 @@
 			children = (
 				C059F5571ED28E1200290967 /* RearMenuViewController.swift */,
 				C059F55D1ED2908E00290967 /* MainViewController.swift */,
+				C0CA53C11EFA5738002C524D /* SongCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +152,8 @@
 		C059F54B1ED285DF00290967 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C0CA53BF1EFA4C40002C524D /* Song.swift */,
+				C0CA53D81EFA7235002C524D /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,6 +171,7 @@
 			children = (
 				C059F55B1ED28F6B00290967 /* RearMenuViewCell.swift */,
 				C042865F1ED8125200A384D9 /* TabCollectionViewCell.swift */,
+				C0CA53C31EFA57C3002C524D /* SongCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +184,22 @@
 				C059F5531ED28ACF00290967 /* MusicPlayer-Bridging-Header.h */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		C0CA53C51EFA6C78002C524D /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				C0CA53C61EFA6C78002C524D /* 01 Another Day of Sun.m4a */,
+				C0CA53C71EFA6C78002C524D /* 01 Free Smoke.m4a */,
+				C0CA53C81EFA6C78002C524D /* 01 Lowlife.m4a */,
+				C0CA53C91EFA6C78002C524D /* 02 Money.m4a */,
+				C0CA53CA1EFA6C78002C524D /* 02 No Long Talk (feat. Giggs).m4a */,
+				C0CA53CB1EFA6C78002C524D /* 02 Someone in the Crowd.m4a */,
+				C0CA53CC1EFA6C78002C524D /* 03 Altar.m4a */,
+				C0CA53CD1EFA6C78002C524D /* 03 Mia & Sebastian_s Theme.m4a */,
+				C0CA53CE1EFA6C78002C524D /* 03 Passionfruit.m4a */,
+			);
+			path = Song;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,9 +286,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0CA53D21EFA6C78002C524D /* 02 Money.m4a in Resources */,
+				C0CA53D71EFA6C78002C524D /* 03 Passionfruit.m4a in Resources */,
+				C0CA53D61EFA6C78002C524D /* 03 Mia & Sebastian_s Theme.m4a in Resources */,
+				C0CA53CF1EFA6C78002C524D /* 01 Another Day of Sun.m4a in Resources */,
 				C059F5351ED2850700290967 /* LaunchScreen.storyboard in Resources */,
+				C0CA53D41EFA6C78002C524D /* 02 Someone in the Crowd.m4a in Resources */,
 				C059F5321ED2850700290967 /* Assets.xcassets in Resources */,
+				C0CA53D51EFA6C78002C524D /* 03 Altar.m4a in Resources */,
+				C0CA53D31EFA6C78002C524D /* 02 No Long Talk (feat. Giggs).m4a in Resources */,
 				C059F5301ED2850700290967 /* Main.storyboard in Resources */,
+				C0CA53D01EFA6C78002C524D /* 01 Free Smoke.m4a in Resources */,
+				C0CA53D11EFA6C78002C524D /* 01 Lowlife.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +318,13 @@
 				C059F52B1ED2850700290967 /* AppDelegate.swift in Sources */,
 				C04286601ED8125200A384D9 /* TabCollectionViewCell.swift in Sources */,
 				C059F5581ED28E1200290967 /* RearMenuViewController.swift in Sources */,
+				C0CA53C41EFA57C3002C524D /* SongCollectionViewCell.swift in Sources */,
 				C059F5561ED28AD000290967 /* SWRevealViewController.m in Sources */,
+				C0CA53C01EFA4C40002C524D /* Song.swift in Sources */,
 				C059F55E1ED2908E00290967 /* MainViewController.swift in Sources */,
 				C059F55A1ED28EFB00290967 /* Constant.swift in Sources */,
+				C0CA53D91EFA7235002C524D /* Album.swift in Sources */,
+				C0CA53C21EFA5738002C524D /* SongCollectionViewController.swift in Sources */,
 				C059F55C1ED28F6B00290967 /* RearMenuViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
