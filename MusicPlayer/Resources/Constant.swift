@@ -9,3 +9,4 @@
 import Foundation
 
 let items = ["SONGS", "ALBUMS", "ARTISTS"]
+let rearMenuClicked = "rearMenuClicked"
