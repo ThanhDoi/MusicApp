@@ -11,63 +11,62 @@ import UIKit
 class QueueSongTableViewController: UITableViewController {
     
     var playingVC: PlayingViewController!
-
+    var isSearching = false
+    var filteredSongs = [Song]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return AudioPlayer.shared.queueSongs.count
+        if !isSearching {
+            return AudioPlayer.shared.queueSongs.count
+        } else {
+            return filteredSongs.count
+        }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "queueSongCell", for: indexPath) as! QueueSongTableViewCell
-
+        
         // Configure the cell...
-        cell.songImage.image = UIImage(data: AudioPlayer.shared.queueSongs[indexPath.row].artwork)
-        cell.titleLabel.text = AudioPlayer.shared.queueSongs[indexPath.row].title
-        cell.artistLabel.text = AudioPlayer.shared.queueSongs[indexPath.row].artist
+        let song: Song
+        if !isSearching {
+            song = AudioPlayer.shared.queueSongs[indexPath.row]
+        } else {
+            song = filteredSongs[indexPath.row]
+        }
+        cell.songImage.image = UIImage(data: song.artwork)
+        cell.titleLabel.text = song.title
+        cell.artistLabel.text = song.artist
         cell.backgroundColor = UIColor.white
         if indexPath.row == AudioPlayer.shared.counter {
             cell.backgroundColor = UIColor.lightGray
         }
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AudioPlayer.shared.counter = indexPath.row
+        if !isSearching {
+            AudioPlayer.shared.counter = indexPath.row
+        } else {
+            let song = filteredSongs[indexPath.row]
+            AudioPlayer.shared.counter = AudioPlayer.shared.queueSongs.index(where: {(song1: Song) -> Bool in
+                song1.title == song.title})!
+            isSearching = false
+        }
         AudioPlayer.shared.playSong()
         playingVC.updateInfo()
         tableView.reloadData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

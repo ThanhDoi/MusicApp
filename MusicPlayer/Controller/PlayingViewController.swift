@@ -12,6 +12,9 @@ class PlayingViewController: UIViewController {
     
     var queueSongVC: QueueSongTableViewController!
     
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var navView: UIView!
+    
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var artistTitle: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -19,8 +22,12 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var playingProgress: UISlider!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchController()
         updateInfo()
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updatePlayingTime), userInfo: nil, repeats: true)
     }
@@ -105,6 +112,34 @@ class PlayingViewController: UIViewController {
     @IBAction func musicListButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "showQueueSong", sender: self)
     }
+    
+    // MARK: Search functions
+    func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchView.addSubview(searchController.searchBar)
+        searchView.isHidden = true
+    }
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
+        navView.isHidden = true
+        searchView.isHidden = false
+    }
+    
+    func getSearchResults(searchString: String) {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            queueSongVC.isSearching = true
+            queueSongVC.filteredSongs = AudioPlayer.shared.queueSongs.filter { song in
+                return song.title.lowercased().contains(searchString.lowercased())
+            }
+        } else {
+            queueSongVC.isSearching = false
+        }
+        queueSongVC.tableView.reloadData()
+    }
+    
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,5 +156,27 @@ class PlayingViewController: UIViewController {
     }
     
     @IBAction func close(segue: UIStoryboardSegue) {
+    }
+}
+
+extension PlayingViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navView.isHidden = false
+        self.searchView.isHidden = true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.navView.isHidden = false
+        self.searchController.searchBar.resignFirstResponder()
+        self.searchView.isHidden = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    }
+}
+
+extension PlayingViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        getSearchResults(searchString: searchController.searchBar.text!)
     }
 }

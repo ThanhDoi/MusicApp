@@ -193,7 +193,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func showPlayingVCGesture(_ sender: Any) {
-        performSegue(withIdentifier: "playingSongSegue", sender: self)
+        if let audioPlayer = AudioPlayer.shared.player {
+            performSegue(withIdentifier: "playingSongSegue", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
