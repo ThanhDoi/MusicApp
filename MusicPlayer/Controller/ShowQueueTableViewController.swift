@@ -10,8 +10,6 @@ import UIKit
 
 class ShowQueueTableViewController: UITableViewController {
     
-    var playingVC: PlayingViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isEditing = true
@@ -43,8 +41,8 @@ class ShowQueueTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AudioPlayer.shared.counter = indexPath.row
         AudioPlayer.shared.playSong()
-        playingVC.updateInfo()
-        playingVC.queueSongVC.tableView.reloadData()
+        AudioPlayer.shared.playingVC.updateInfo()
+        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -63,7 +61,7 @@ class ShowQueueTableViewController: UITableViewController {
             }
         }
         tableView.reloadData()
-        playingVC.queueSongVC.tableView.reloadData()
+        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -72,8 +70,8 @@ class ShowQueueTableViewController: UITableViewController {
         AudioPlayer.shared.queueSongs.insert(itemToMove, at: to.row)
         AudioPlayer.shared.counter = to.row
         tableView.reloadData()
-        playingVC.queueSongVC.tableView.reloadData()
-        playingVC.updateInfo()
+        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
+        AudioPlayer.shared.playingVC.updateInfo()
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

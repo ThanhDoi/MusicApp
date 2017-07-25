@@ -10,7 +10,6 @@ import UIKit
 
 class QueueSongTableViewController: UITableViewController {
     
-    var playingVC: PlayingViewController!
     var isSearching = false
     var filteredSongs = [Song]()
     
@@ -66,7 +65,7 @@ class QueueSongTableViewController: UITableViewController {
             isSearching = false
         }
         AudioPlayer.shared.playSong()
-        playingVC.updateInfo()
+        AudioPlayer.shared.playingVC.updateInfo()
         tableView.reloadData()
     }
 }

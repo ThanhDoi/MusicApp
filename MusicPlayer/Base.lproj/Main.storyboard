@@ -291,7 +291,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="back"/>
                                         <connections>
-                                            <action selector="backButtonPress:" destination="Ssb-5q-ba5" eventType="touchUpInside" id="6SV-4a-dIj"/>
+                                            <segue destination="sfO-bU-TAn" kind="unwind" unwindAction="closeWithSegue:" id="8ap-iM-Uep"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFb-9c-RhN">
@@ -452,7 +452,6 @@
                         <outlet property="shuffleButton" destination="rJu-3g-wiU" id="0MV-a2-lGG"/>
                         <outlet property="songTitle" destination="FFb-9c-RhN" id="6hg-0M-OMu"/>
                         <outlet property="timeLabel" destination="bbD-ZY-SeD" id="LXp-h2-cgS"/>
-                        <segue destination="sfO-bU-TAn" kind="unwind" identifier="unwindSegue" unwindAction="closeWithSegue:" id="l4Y-FO-dec"/>
                         <segue destination="UVk-Rc-4WT" kind="show" identifier="showQueueSong" id="TCn-3d-pNO"/>
                     </connections>
                 </viewController>
@@ -699,13 +698,10 @@
                     <navigationItem key="navigationItem" title="Playing Queue" id="w15-pb-bg7">
                         <barButtonItem key="leftBarButtonItem" image="back" id="HCE-Z7-2pU">
                             <connections>
-                                <segue destination="7wj-W5-qhD" kind="unwind" unwindAction="closeWithSegue:" id="FCM-lp-lPI"/>
+                                <segue destination="7wj-W5-qhD" kind="unwind" unwindAction="unwindSegueWithSegue:" id="cm8-m2-PFS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="7wj-W5-qhD" kind="unwind" unwindAction="closeWithSegue:" id="aWc-Xq-qc6"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5g-Y2-4Hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7wj-W5-qhD" userLabel="Exit" sceneMemberID="exit"/>

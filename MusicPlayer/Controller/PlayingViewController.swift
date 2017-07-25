@@ -23,13 +23,24 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     
+    var timer: Timer!
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
         updateInfo()
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updatePlayingTime), userInfo: nil, repeats: true)
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updatePlayingTime), userInfo: nil, repeats: true)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if timer != nil {
+            timer.invalidate()
+            timer = nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,10 +74,6 @@ class PlayingViewController: UIViewController {
         queueSongVC.tableView.reloadData()
         let index = IndexPath(row: AudioPlayer.shared.counter, section: 0)
         queueSongVC.tableView.scrollToRow(at: index, at: UITableViewScrollPosition.middle, animated: true)
-    }
-    
-    @IBAction func backButtonPress(_ sender: Any) {
-        performSegue(withIdentifier: "unwindSegue", sender: self)
     }
     
     @IBAction func previousButtonPress(_ sender: Any) {
@@ -146,16 +153,10 @@ class PlayingViewController: UIViewController {
         if segue.identifier == "queueSongSegue" {
             let vc = segue.destination as! QueueSongTableViewController
             queueSongVC = vc
-            queueSongVC.playingVC = self
-        }
-        if segue.identifier == "showQueueSong" {
-            let navi = segue.destination as! UINavigationController
-            let vc = navi.topViewController as! ShowQueueTableViewController
-            vc.playingVC = self
         }
     }
     
-    @IBAction func close(segue: UIStoryboardSegue) {
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
     }
 }
 
