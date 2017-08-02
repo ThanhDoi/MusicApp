@@ -157,9 +157,10 @@ class MainViewController: UIViewController {
     }
     
     func rearMenuClick(_ notification: Notification) {
-        let indexPath = notification.object as! IndexPath
-        self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
-        self.collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAt: indexPath)
+        if let indexPath = notification.object as? IndexPath {
+            self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
+            self.collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAt: indexPath)
+        }
     }
     
     func setupNowPlayingInfoCentre() {
