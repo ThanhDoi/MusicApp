@@ -31,7 +31,7 @@ class ShowQueueTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "queueSongCell", for: indexPath) as! QueueSongTableViewCell
-        cell.songImage.image = UIImage(data: AudioPlayer.shared.queueSongs[indexPath.row].artwork)
+        cell.songImage.image = UIImage(data: AudioPlayer.shared.queueSongs[indexPath.row].artwork!)
         cell.titleLabel.text = AudioPlayer.shared.queueSongs[indexPath.row].title
         cell.artistLabel.text = AudioPlayer.shared.queueSongs[indexPath.row].artist
         cell.accessoryType = .disclosureIndicator
@@ -41,8 +41,8 @@ class ShowQueueTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AudioPlayer.shared.counter = indexPath.row
         AudioPlayer.shared.playSong()
-        AudioPlayer.shared.playingVC.updateInfo()
-        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
+        AudioPlayer.shared.playingVC?.updateInfo()
+        AudioPlayer.shared.playingVC?.queueSongVC?.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -61,7 +61,7 @@ class ShowQueueTableViewController: UITableViewController {
             }
         }
         tableView.reloadData()
-        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
+        AudioPlayer.shared.playingVC?.queueSongVC?.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -70,8 +70,8 @@ class ShowQueueTableViewController: UITableViewController {
         AudioPlayer.shared.queueSongs.insert(itemToMove, at: to.row)
         AudioPlayer.shared.counter = to.row
         tableView.reloadData()
-        AudioPlayer.shared.playingVC.queueSongVC.tableView.reloadData()
-        AudioPlayer.shared.playingVC.updateInfo()
+        AudioPlayer.shared.playingVC?.queueSongVC?.tableView.reloadData()
+        AudioPlayer.shared.playingVC?.updateInfo()
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

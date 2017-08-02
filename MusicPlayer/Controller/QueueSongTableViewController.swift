@@ -45,7 +45,7 @@ class QueueSongTableViewController: UITableViewController {
         } else {
             song = filteredSongs[indexPath.row]
         }
-        cell.songImage.image = UIImage(data: song.artwork)
+        cell.songImage.image = UIImage(data: song.artwork!)
         cell.titleLabel.text = song.title
         cell.artistLabel.text = song.artist
         cell.backgroundColor = UIColor.white
@@ -65,7 +65,7 @@ class QueueSongTableViewController: UITableViewController {
             isSearching = false
         }
         AudioPlayer.shared.playSong()
-        AudioPlayer.shared.playingVC.updateInfo()
+        AudioPlayer.shared.playingVC?.updateInfo()
         tableView.reloadData()
     }
 }

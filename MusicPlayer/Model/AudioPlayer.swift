@@ -14,8 +14,8 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     
     static let shared = AudioPlayer()
     
-    var mainVC: MainViewController!
-    var playingVC: PlayingViewController!
+    var mainVC: MainViewController?
+    var playingVC: PlayingViewController?
     var player: AVAudioPlayer!
     var counter = 0
     var isShuffle = false
@@ -42,8 +42,8 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     func updateInfoToMainVC() {
-        mainVC.updateInfo()
-        mainVC.setTimer()
+        mainVC?.updateInfo()
+        mainVC?.setTimer()
     }
     
     func updateInfoMPNowPlaying() {
@@ -53,7 +53,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             MPMediaItemPropertyAlbumTitle: queueSongs[counter].album,
             MPMediaItemPropertyPlaybackDuration: player.duration,
             MPNowPlayingInfoPropertyElapsedPlaybackTime: player.currentTime,
-            MPMediaItemPropertyArtwork: MPMediaItemArtwork(image: UIImage(data: queueSongs[counter].artwork)!),
+            MPMediaItemPropertyArtwork: MPMediaItemArtwork(image: UIImage(data: queueSongs[counter].artwork!)!),
             MPNowPlayingInfoPropertyPlaybackRate: player.isPlaying ? 1 : 0
         ]
     }
@@ -65,7 +65,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
                 shuffleSong()
             } else {
                 playNextSong()
-                playingVC.updateInfo()
+                playingVC?.updateInfo()
             }
         } else {
             playSong()
@@ -86,7 +86,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
                 counter = 0
             }
             playSong()
-            playingVC.updateInfo()
+            playingVC?.updateInfo()
         } else {
             shuffleSong()
         }
@@ -99,7 +99,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
                 counter = queueSongs.count - 1
             }
             playSong()
-            playingVC.updateInfo()
+            playingVC?.updateInfo()
         } else {
             shuffleSong()
         }
@@ -117,9 +117,8 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     
     func shuffleSong() {
         let random = arc4random_uniform(UInt32(queueSongs.count))
-        print(random)
         counter = Int(random)
         playSong()
-        playingVC.updateInfo()
+        playingVC?.updateInfo()
     }
 }

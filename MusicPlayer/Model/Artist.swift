@@ -9,7 +9,7 @@
 import Foundation
 
 class Artist {
-    var name: String!
+    var name: String?
     var songs = [Song]()
     var albums = [Album]()
     

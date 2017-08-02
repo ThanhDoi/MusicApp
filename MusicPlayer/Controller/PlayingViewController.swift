@@ -10,7 +10,7 @@ import UIKit
 
 class PlayingViewController: UIViewController {
     
-    var queueSongVC: QueueSongTableViewController!
+    var queueSongVC: QueueSongTableViewController?
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var navView: UIView!
@@ -71,9 +71,9 @@ class PlayingViewController: UIViewController {
             pauseButton.setImage(UIImage(named: "play"), for: .normal)
         }
         playingProgress.setValue(0, animated: true)
-        queueSongVC.tableView.reloadData()
+        queueSongVC?.tableView.reloadData()
         let index = IndexPath(row: AudioPlayer.shared.counter, section: 0)
-        queueSongVC.tableView.scrollToRow(at: index, at: UITableViewScrollPosition.middle, animated: true)
+        queueSongVC?.tableView.scrollToRow(at: index, at: UITableViewScrollPosition.middle, animated: true)
     }
     
     @IBAction func previousButtonPress(_ sender: Any) {
@@ -106,11 +106,11 @@ class PlayingViewController: UIViewController {
         if let audioPlayer = AudioPlayer.shared.player {
             if audioPlayer.isPlaying {
                 pauseButton.setImage(UIImage(named: "play"), for: .normal)
-                AudioPlayer.shared.mainVC.playingSongPauseButton.setImage(UIImage(named: "play"), for: .normal)
+                AudioPlayer.shared.mainVC?.playingSongPauseButton.setImage(UIImage(named: "play"), for: .normal)
                 AudioPlayer.shared.pauseSong()
             } else {
                 pauseButton.setImage(UIImage(named: "pause"), for: .normal)
-                AudioPlayer.shared.mainVC.playingSongPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+                AudioPlayer.shared.mainVC?.playingSongPauseButton.setImage(UIImage(named: "pause"), for: .normal)
                 AudioPlayer.shared.resumeSong()
             }
         }
@@ -136,14 +136,14 @@ class PlayingViewController: UIViewController {
     
     func getSearchResults(searchString: String) {
         if searchController.isActive && searchController.searchBar.text != "" {
-            queueSongVC.isSearching = true
-            queueSongVC.filteredSongs = AudioPlayer.shared.queueSongs.filter { song in
-                return song.title.lowercased().contains(searchString.lowercased())
+            queueSongVC?.isSearching = true
+            queueSongVC?.filteredSongs = AudioPlayer.shared.queueSongs.filter { song in
+                return (song.title?.lowercased().contains(searchString.lowercased()))!
             }
         } else {
-            queueSongVC.isSearching = false
+            queueSongVC?.isSearching = false
         }
-        queueSongVC.tableView.reloadData()
+        queueSongVC?.tableView.reloadData()
     }
     
     

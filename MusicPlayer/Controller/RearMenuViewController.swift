@@ -10,8 +10,6 @@ import UIKit
 
 class RearMenuViewController: UITableViewController {
     
-    var mainVC: MainViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

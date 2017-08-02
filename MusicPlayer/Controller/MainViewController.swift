@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var playingSongPauseButton: UIButton!
     
     var isListView = true
-    var songCollectionViewController: SongCollectionViewController!
+    var songCollectionViewController: SongCollectionViewController?
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
         let playingSong = AudioPlayer.shared.queueSongs[AudioPlayer.shared.counter]
         self.playingSongName.text = playingSong.title
         self.playingSongArtist.text = playingSong.artist
-        self.playingSongImage.image = UIImage(data: playingSong.artwork)
+        self.playingSongImage.image = UIImage(data: playingSong.artwork!)
         self.playingSlider.maximumValue = Float(TimeInterval(AudioPlayer.shared.player.duration))
         self.playingSlider.setValue(0, animated: true)
         if AudioPlayer.shared.player.isPlaying {
@@ -101,20 +101,20 @@ class MainViewController: UIViewController {
     
     func getSearchResult(searchString: String) {
         if searchController.isActive && searchController.searchBar.text != "" {
-            songCollectionViewController.isSearching = true
-            songCollectionViewController.filteredSongs = songCollectionViewController.songs.filter { song in
-                return song.title.lowercased().contains(searchString.lowercased())
-            }
-            songCollectionViewController.filteredAlbums = songCollectionViewController.albums.filter { album in
-                return album.name.lowercased().contains(searchString.lowercased())
-            }
-            songCollectionViewController.filteredArtists = songCollectionViewController.artists.filter { artist in
-                return artist.name.lowercased().contains(searchString.lowercased())
-            }
+            songCollectionViewController?.isSearching = true
+            songCollectionViewController?.filteredSongs = (songCollectionViewController?.songs.filter { song in
+                return (song.title?.lowercased().contains(searchString.lowercased()))!
+                })!
+            songCollectionViewController?.filteredAlbums = (songCollectionViewController?.albums.filter { album in
+                return (album.name?.lowercased().contains(searchString.lowercased()))!
+                })!
+            songCollectionViewController?.filteredArtists = (songCollectionViewController?.artists.filter { artist in
+                return (artist.name?.lowercased().contains(searchString.lowercased()))!
+                })!
         } else {
-            songCollectionViewController.isSearching = false
+            songCollectionViewController?.isSearching = false
         }
-        songCollectionViewController.collectionView?.reloadData()
+        songCollectionViewController?.collectionView?.reloadData()
     }
     
     @IBAction func songTypeButtonAction(_ sender: Any) {
@@ -124,7 +124,7 @@ class MainViewController: UIViewController {
             songTypeButton.setImage(UIImage(named: "list"), for: .normal)
         }
         isListView = !isListView
-        songCollectionViewController.listButtonClicked(isListView: isListView)
+        songCollectionViewController?.listButtonClicked(isListView: isListView)
     }
     
     @IBAction func pauseButtonAction(_ sender: Any) {
@@ -173,13 +173,13 @@ class MainViewController: UIViewController {
         MPRemoteCommandCenter.shared().playCommand.addTarget(handler: {event in
             AudioPlayer.shared.resumeSong()
             self.playingSongPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-            AudioPlayer.shared.playingVC.pauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            AudioPlayer.shared.playingVC?.pauseButton.setImage(UIImage(named: "pause"), for: .normal)
             return .success
         })
         MPRemoteCommandCenter.shared().pauseCommand.addTarget(handler: {event in
             AudioPlayer.shared.pauseSong()
             self.playingSongPauseButton.setImage(UIImage(named: "play"), for: .normal)
-            AudioPlayer.shared.playingVC.pauseButton.setImage(UIImage(named: "play"), for: .normal)
+            AudioPlayer.shared.playingVC?.pauseButton.setImage(UIImage(named: "play"), for: .normal)
             return .success
         })
         MPRemoteCommandCenter.shared().nextTrackCommand.addTarget(handler: {event in
@@ -202,7 +202,6 @@ class MainViewController: UIViewController {
         if segue.identifier == "songEmbedSegue" {
             let vc = segue.destination as! SongCollectionViewController
             songCollectionViewController = vc
-            songCollectionViewController.mainVC = self
         }
         
         if segue.identifier == "playingSongSegue" {
@@ -226,15 +225,15 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
         switch index {
         case .songs:
             currentTab = 0
-            songCollectionViewController.collectionView?.reloadData()
+            songCollectionViewController?.collectionView?.reloadData()
             collectionView.reloadData()
         case .albums:
             currentTab = 1
-            songCollectionViewController.collectionView?.reloadData()
+            songCollectionViewController?.collectionView?.reloadData()
             collectionView.reloadData()
         case .artists:
             currentTab = 2
-            songCollectionViewController.collectionView?.reloadData()
+            songCollectionViewController?.collectionView?.reloadData()
             collectionView.reloadData()
         }
     }
@@ -287,8 +286,8 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.searchController.isActive = false
         if self.titleLabel.text != "Beauty Music" {
-            songCollectionViewController.isSearching = true
-            songCollectionViewController.collectionView?.reloadData()
+            songCollectionViewController?.isSearching = true
+            songCollectionViewController?.collectionView?.reloadData()
         }
     }
 }

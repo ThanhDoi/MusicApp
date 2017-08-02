@@ -13,8 +13,6 @@ private let reuseIdentifier = "songCell"
 
 class SongCollectionViewController: UICollectionViewController {
     
-    var mainVC: MainViewController!
-    
     let listFlowLayout = ListFlowLayout()
     let gridFlowLayout = GridFlowLayout()
     
@@ -89,7 +87,7 @@ class SongCollectionViewController: UICollectionViewController {
                 }
             }
             if state == true {
-                albums.append(Album(name: eachSong.album))
+                albums.append(Album(name: eachSong.album!))
                 albums.last?.appendSong(song: eachSong)
             }
         }
@@ -105,7 +103,7 @@ class SongCollectionViewController: UICollectionViewController {
                 }
             }
             if state == true {
-                artists.append(Artist(name: eachSong.artist))
+                artists.append(Artist(name: eachSong.artist!))
                 artists.last?.appendSong(song: eachSong)
             }
         }
@@ -121,7 +119,7 @@ class SongCollectionViewController: UICollectionViewController {
                 }
                 
                 if state == true {
-                    eachArtist.albums.append(Album(name: eachSong.album))
+                    eachArtist.albums.append(Album(name: eachSong.album!))
                     eachArtist.albums.last?.appendSong(song: eachSong)
                 }
             }
@@ -181,7 +179,7 @@ class SongCollectionViewController: UICollectionViewController {
                 song = filteredSongs[indexPath.row]
             }
             cell.songArtwork.isHidden = false
-            cell.songArtwork.image = UIImage(data: song.artwork)
+            cell.songArtwork.image = UIImage(data: song.artwork!)
             cell.songTitle.isHidden = false
             cell.songTitle.text = song.title
             cell.songArtist.isHidden = false
@@ -242,7 +240,7 @@ class SongCollectionViewController: UICollectionViewController {
             AudioPlayer.shared.appendSong(song: song)
             AudioPlayer.shared.counter = 0
             AudioPlayer.shared.playSong()
-            mainVC.performSegue(withIdentifier: "playingSongSegue", sender: mainVC)
+            AudioPlayer.shared.mainVC?.performSegue(withIdentifier: "playingSongSegue", sender: AudioPlayer.shared.mainVC)
         case 1:
             let toPlaySong: [Song]
             if !isSearching {
@@ -255,7 +253,7 @@ class SongCollectionViewController: UICollectionViewController {
             }
             AudioPlayer.shared.counter = 0
             AudioPlayer.shared.playSong()
-            mainVC.performSegue(withIdentifier: "playingSongSegue", sender: mainVC)
+            AudioPlayer.shared.mainVC?.performSegue(withIdentifier: "playingSongSegue", sender: AudioPlayer.shared.mainVC)
         case 2:
             let toPlaySong: [Song]
             if !isSearching {
@@ -268,7 +266,7 @@ class SongCollectionViewController: UICollectionViewController {
             }
             AudioPlayer.shared.counter = 0
             AudioPlayer.shared.playSong()
-            mainVC.performSegue(withIdentifier: "playingSongSegue", sender: mainVC)
+            AudioPlayer.shared.mainVC?.performSegue(withIdentifier: "playingSongSegue", sender: AudioPlayer.shared.mainVC)
         default:
             print("INVALID")
         }

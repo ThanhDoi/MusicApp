@@ -10,11 +10,11 @@ import Foundation
 
 class Song {
     
-    var title: String!
-    var artist: String!
-    var album: String!
-    var songURL: URL!
-    var artwork: Data!
+    var title: String?
+    var artist: String?
+    var album: String?
+    var songURL: URL?
+    var artwork: Data?
     
     init(title: String, artist: String, album: String, songURL: URL, artwork: Data) {
         self.title = title
